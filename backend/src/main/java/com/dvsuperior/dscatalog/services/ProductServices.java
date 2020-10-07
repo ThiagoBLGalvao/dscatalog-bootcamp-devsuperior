@@ -32,7 +32,7 @@ public class ProductServices {
     @Transactional(readOnly = true)
     public Page<ProductDTO> findAllPaged(PageRequest pageRequest){
         Page<Product> list =  repository.findAll(pageRequest);
-        return list.map(x -> new ProductDTO(x));
+        return list.map(x -> new ProductDTO(x, x.getCategories()));
     }
 
     @Transactional(readOnly = true)
